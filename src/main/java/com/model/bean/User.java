@@ -11,11 +11,10 @@
  * @description 
  *******************************************************************************
  */
-package com.model.bean.po;
+package com.model.bean;
 
-import com.model.bean.BaseBean;
-import com.model.util.annotation.Column;
-import com.model.util.annotation.Table;
+import com.model.annotation.Column;
+import com.model.annotation.Table;
 import com.model.util.mysql.MysqlTypeConstant;
 
 /**

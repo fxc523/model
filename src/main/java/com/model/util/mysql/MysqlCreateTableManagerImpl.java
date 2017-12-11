@@ -28,9 +28,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
-import com.model.util.annotation.Column;
-import com.model.util.annotation.LengthCode;
-import com.model.util.annotation.Table;
+import com.model.annotation.Column;
+import com.model.annotation.LengthCode;
+import com.model.annotation.Table;
 import com.model.util.other.ClassUtil;
 import com.model.util.system.createtable.CreateMysqlTableMapper;
 

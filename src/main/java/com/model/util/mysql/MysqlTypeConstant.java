@@ -13,7 +13,7 @@
  */
 package com.model.util.mysql;
 
-import com.model.util.annotation.LengthCode;
+import com.model.annotation.LengthCode;
 
 /**
  * 用于配置Mysql数据库中类型，并且该类型需要设置几个长度

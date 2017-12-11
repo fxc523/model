@@ -13,7 +13,7 @@
  */
 package com.model.bean;
 
-import com.model.util.annotation.Column;
+import com.model.annotation.Column;
 
 /**
  ******************************************
