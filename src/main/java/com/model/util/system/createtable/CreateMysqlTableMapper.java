@@ -1,13 +1,11 @@
 /*
  *******************************************************************************
- * @ProjectName 中国航信  DIT(国际运价前端管理系统)
+ * @ProjectName mybatis create table
  * @FileName	CreateMysqlTableMapper.java
- * @package		com.model.util.system.createtable
+ * @package		com.model.util.mysql
  * @author		fuxianchao
- * @Date		2017年11月27日 下午1:16:19
+ * @Date		2017年11月23日 下午2:34:08
  * @version		1.0
- * @Company		中国民航信息网络股份有限公司
- * @Copyright	Copyright (c) 2017
  * @description 
  *******************************************************************************
  */

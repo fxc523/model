@@ -2,7 +2,7 @@
  *******************************************************************************
  * @ProjectName mybatis create table
  * @FileName	Column.java
- * @package		com.model.util.annotation
+ * @package		com.model.annotation
  * @author		fuxianchao
  * @Date		2017年11月23日 下午2:34:08
  * @version		1.0

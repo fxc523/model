@@ -1,3 +1,14 @@
+/*
+ *******************************************************************************
+ * @ProjectName mybatis create table
+ * @FileName	CreateTableParam.java
+ * @package		com.model.util.mysql
+ * @author		fuxianchao
+ * @Date		2017年11月23日 下午2:34:08
+ * @version		1.0
+ * @description 
+ *******************************************************************************
+ */
 package com.model.util.mysql;
 
 /**
