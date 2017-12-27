@@ -9,7 +9,7 @@
  * @description 
  *******************************************************************************
  */
-package com.model.util.other;
+package com.model.util;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -44,14 +44,19 @@ public class ClassUtil {
 	 * @return Set<Class<?>> 扫描的包下的类的set集合
 	 */
 	public static Set<Class<?>> getAllClass(String pack){
+
+
 		// 第一个class类的集合
 		Set<Class<?>> classes = new LinkedHashSet<Class<?>>();
 		// 是否循环迭代
 		boolean recursive = true;
-		String packageName = pack.replace('.', '/');
+		// 获取包的名字 并进行替换
+		String packageName = pack;
+		String packageDirName = packageName.replace('.', '/');
+		// 定义一个枚举的集合 并进行循环来处理这个目录下的things
 		Enumeration<URL> dirs;
 		try{
-			dirs = Thread.currentThread().getContextClassLoader().getResources(packageName);
+			dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
 			// 循环迭代下去
 			while (dirs.hasMoreElements()){
 				// 获取下一个元素
@@ -60,11 +65,11 @@ public class ClassUtil {
 				String protocol = url.getProtocol();
 				// 如果是以文件的形式保存在服务器上
 				if ("file".equals(protocol)) {
-					System.out.println("file类型的扫描");
+					System.err.println("file类型的扫描");
 					// 获取包的物理路径
 					String filePath = URLDecoder.decode(url.getFile(), "UTF-8");
 					// 以文件的方式扫描整个包下的文件 并添加到集合中
-					findAndAddClassesInPackageByFile(pack, filePath, recursive, classes);
+					findAndAddClassesInPackageByFile(packageName, filePath, recursive, classes);
 				}else if ("jar".equals(protocol)) {
 					// 如果是jar包文件
 					// 定义一个JarFile
@@ -86,7 +91,7 @@ public class ClassUtil {
 								name = name.substring(1);
 							}
 							// 如果前半部分和定义的包名相同
-							if (name.startsWith(packageName)) {
+							if (name.startsWith(packageDirName)) {
 								int idx = name.lastIndexOf('/');
 								// 如果以"/"结尾 是一个包
 								if (idx != -1) {
@@ -120,7 +125,9 @@ public class ClassUtil {
 		}catch (IOException e){
 			e.printStackTrace();
 		}
+
 		return classes;
+	
 	}
 	
 	/**
@@ -166,10 +173,9 @@ public class ClassUtil {
 					// 添加到集合中去
 					/* classes.add(Class.forName(packageName + '.' +
 					 className));*/
-					// 经过回复同学的提醒，这里用forName有一些不好，会触发static方法，没有使用classLoader的load干净
 					classes.add(Thread.currentThread().getContextClassLoader().loadClass(packageName+ "." +className));
 				}catch (ClassNotFoundException e){
-					// log.error("添加用户自定义视图类错误 找不到此类的.class文件");
+					Log.BS.l().info("建表中--po加载失败");
 					e.printStackTrace();
 				}
 			}

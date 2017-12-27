@@ -2,19 +2,20 @@
  *******************************************************************************
  * @ProjectName mybatis create table
  * @FileName	SysMysqlColumns.java
- * @package		com.model.util.mysql
+ * @package		com.model.system.createtable.constant
  * @author		fuxianchao
- * @Date		2017年11月23日 下午2:34:08
+ * @Date		2017年12月22日 上午9:33:44
  * @version		1.0
+ * @Company		个人
  * @description 
  *******************************************************************************
  */
-package com.model.util.mysql;
+package com.model.system.createtable.constant;
 
 /**
  * 用于查询表中字段结构详细信息
  ******************************************
- * @author fuxianchao  [2017年11月27日 下午1:19:40]
+ * @author fuxianchao  [2017年12月22日 上午9:33:44]
  * @version 1.0
  ******************************************
  */
@@ -373,62 +374,6 @@ public class SysMysqlColumns {
 	 */
 	public void setColumn_comment(String column_comment) {
 		this.column_comment = column_comment;
-	}
-	/**
-	 * 获取 columnNameKey
-	 * @return the columnNameKey
-	 */
-	public static String getColumnNameKey() {
-		return COLUMN_NAME_KEY;
-	}
-	/**
-	 * 获取 columnDefaultKey
-	 * @return the columnDefaultKey
-	 */
-	public static String getColumnDefaultKey() {
-		return COLUMN_DEFAULT_KEY;
-	}
-	/**
-	 * 获取 isNullableKey
-	 * @return the isNullableKey
-	 */
-	public static String getIsNullableKey() {
-		return IS_NULLABLE_KEY;
-	}
-	/**
-	 * 获取 dataTypeKey
-	 * @return the dataTypeKey
-	 */
-	public static String getDataTypeKey() {
-		return DATA_TYPE_KEY;
-	}
-	/**
-	 * 获取 numericPrecisionKey
-	 * @return the numericPrecisionKey
-	 */
-	public static String getNumericPrecisionKey() {
-		return NUMERIC_PRECISION_KEY;
-	}
-	/**
-	 * 获取 numericScaleKey
-	 * @return the numericScaleKey
-	 */
-	public static String getNumericScaleKey() {
-		return NUMERIC_SCALE_KEY;
-	}
-	/**
-	 * 获取 columnKeyKey
-	 * @return the columnKeyKey
-	 */
-	public static String getColumnKeyKey() {
-		return COLUMN_KEY_KEY;
-	}
-	/**
-	 * 获取 extraKey
-	 * @return the extraKey
-	 */
-	public static String getExtraKey() {
-		return EXTRA_KEY;
 	}
 	
 	

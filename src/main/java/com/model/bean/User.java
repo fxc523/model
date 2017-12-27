@@ -13,7 +13,7 @@ package com.model.bean;
 
 import com.model.annotation.Column;
 import com.model.annotation.Table;
-import com.model.util.mysql.MysqlTypeConstant;
+import com.model.system.createtable.constant.MySqlTypeConstant;
 
 /**
  ******************************************
@@ -21,26 +21,31 @@ import com.model.util.mysql.MysqlTypeConstant;
  * @version 1.0
  ******************************************
  */
-@Table(name="user")
+@Table(name="m_user")
 public class User extends BaseBean {
 
 	/**
 	 * 用户名
 	 */
-	@Column(name = "username", type =MysqlTypeConstant.VARCHAR, length=32)
+	@Column(name = "username", type =MySqlTypeConstant.VARCHAR, length=32)
 	private String username;
 	
 	/**
 	 * 密码
 	 */
-	@Column(name = "pwd", type =MysqlTypeConstant.VARCHAR)
+	@Column(name = "pwd", type =MySqlTypeConstant.VARCHAR)
 	private String pwd;
 	
 	/**
 	 * 性别0,男，1女
 	 */
-	@Column(name = "sex", type =MysqlTypeConstant.INT, length=1)
+	@Column(name = "sex", type =MySqlTypeConstant.INT, length=1)
 	private int sex;
+	
+	/**
+	 * 电话号
+	 */
+	private String telNum;
 
 	/**
 	 * 获取 username
@@ -89,5 +94,22 @@ public class User extends BaseBean {
 	public void setSex(int sex) {
 		this.sex = sex;
 	}
+
+	/**
+	 * 获取 telNum
+	 * @return the telNum
+	 */
+	public String getTelNum() {
+		return telNum;
+	}
+
+	/**
+	 * 设置 telNum
+	 * @param telNum the telNum to set
+	 */
+	public void setTelNum(String telNum) {
+		this.telNum = telNum;
+	}
+	
 	
 }

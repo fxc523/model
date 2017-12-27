@@ -1,28 +1,26 @@
 /*
  *******************************************************************************
  * @ProjectName mybatis create table
- * @FileName	MysqlTypeConstant.java
- * @package		com.model.util.mysql
+ * @FileName	MySqlTypeConstant.java
+ * @package		com.model.system.createtable.constant
  * @author		fuxianchao
- * @Date		2017年11月23日 下午2:34:08
+ * @Date		2017年12月20日 下午1:40:31
  * @version		1.0
+ * @Company		个人
  * @description 
  *******************************************************************************
  */
-package com.model.util.mysql;
+package com.model.system.createtable.constant;
 
 import com.model.annotation.LengthCode;
 
 /**
- * 用于配置Mysql数据库中类型，并且该类型需要设置几个长度
- * 这里配置多少个类型，创建表能使用多少类型
  ******************************************
- * @author fuxianchao  [2017年11月23日 下午3:10:28]
+ * @author fuxianchao  [2017年12月20日 下午1:40:31]
  * @version 1.0
  ******************************************
  */
-public class MysqlTypeConstant {
-
+public class MySqlTypeConstant {
 
 	@LengthCode
 	public static final  String INT = "int";
@@ -35,9 +33,6 @@ public class MysqlTypeConstant {
 	
 	@LengthCode(LengthCount=0)
 	public static final  String DATETIME = "datetime";
-	
-	@LengthCode(LengthCount=0)
-	public static final  String DATETYPE = "date";
 	
 	@LengthCode(LengthCount=2)
 	public static final  String DECIMAL = "decimal";

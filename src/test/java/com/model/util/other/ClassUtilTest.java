@@ -16,6 +16,8 @@ import java.util.Set;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.model.util.ClassUtil;
+
 /**
  ******************************************
  * @author fuxianchao  [2017年11月24日 上午10:01:54]

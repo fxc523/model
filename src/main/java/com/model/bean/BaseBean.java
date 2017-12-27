@@ -24,7 +24,7 @@ public class BaseBean {
 	/**
 	 * 主键
 	 */
-	@Column(name="id",type="VARCHAR")
+	@Column(type="VARCHAR",length=32,isKey=true)
 	private String id;
 	
 	

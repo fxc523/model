@@ -40,7 +40,7 @@ public @interface Column {
 	 * 
 	 * @return
 	 */
-	public String name();
+	public String name() default "";
 
 	/**
 	 * 字段类型
