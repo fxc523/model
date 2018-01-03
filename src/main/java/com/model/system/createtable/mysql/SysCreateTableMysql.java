@@ -13,7 +13,6 @@
 package com.model.system.createtable.mysql;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 /**
  * 创建mysql数据库
