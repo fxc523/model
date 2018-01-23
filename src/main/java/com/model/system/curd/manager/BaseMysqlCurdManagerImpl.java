@@ -96,7 +96,7 @@ public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 			tableMap.put(tableName.name(), dataMap);
 			// 执行保存操作
 			baseMysqlCurdManagerDao.save(tableMap);
-			return baseMysqlCurdManagerDao.getById((String) dataMap.get("id"));
+			return null;
 		}else{
 			dataMap.put(KEYFIELDMAP, keyFieldMap);
 			tableMap.put(tableName.name(), dataMap);

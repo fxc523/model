@@ -15,7 +15,7 @@ package com.model.system.curd.manager.dao;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  ******************************************
@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
  * @version 1.0
  ******************************************
  */
-@Component
+@Repository
 public interface BaseMysqlCurdManagerDao {
 	
 	/**

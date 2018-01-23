@@ -13,7 +13,7 @@
 	
 	<context:property-placeholder location="classpath:config/*.properties" />
 	<!-- 设置spring容器的扫描范围，扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
-	<context:component-scan base-package="com.model.system.createtable.*" />
+	<!-- <context:component-scan base-package="com.model.*" /> -->
 	<!-- 配置dbcp连接池JDBC数据源 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -40,7 +40,7 @@
 		<!-- 指定sessionFactory的名字 -->
 		<property name="sqlSessionFactoryBeanName" value="sessionFactory"/>
 		<!-- 指定dao接口所在的包 -->
-		<property name="basePackage" value="com.model.system.createtable.mapper"/>
+		<property name="basePackage" value="com.model.system.createtable.mapper,com.model.system.curd.manager.dao"/>
 	</bean>
 	
 	<!-- 事务管理器transactionManager -->
