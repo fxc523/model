@@ -14,12 +14,16 @@ package com.model.system.curd.manager;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 /**
  ******************************************
  * @author fuxianchao  [2018年1月11日 下午4:46:38]
  * @version 1.0
  ******************************************
  */
+@Component
 public interface BaseMysqlCurdManager<T> {
 
 	/**
@@ -30,7 +34,7 @@ public interface BaseMysqlCurdManager<T> {
 	 ******************************************
 	 * @param t
 	 */
-	void save(T t);
+	Object save(T t);
 	
 	/**
 	 * 根据主键条件删除

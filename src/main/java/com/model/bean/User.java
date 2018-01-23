@@ -39,7 +39,7 @@ public class User extends BaseBean {
 	/**
 	 * 性别0,男，1女
 	 */
-	@Column(name = "sex", type =MySqlTypeConstant.INT, length=1)
+	//@Column(name = "sex", type =MySqlTypeConstant.INT, length=1)
 	private int sex;
 	
 	/**
