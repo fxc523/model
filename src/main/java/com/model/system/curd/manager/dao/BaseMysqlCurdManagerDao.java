@@ -15,7 +15,7 @@ package com.model.system.curd.manager.dao;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 /**
  ******************************************
@@ -23,8 +23,8 @@ import org.springframework.stereotype.Repository;
  * @version 1.0
  ******************************************
  */
-@Repository
-public interface BaseMysqlCurdManagerDao<T> {
+@Component
+public interface BaseMysqlCurdManagerDao {
 	
 	/**
 	 * 获得32位的主键作为id
@@ -44,7 +44,7 @@ public interface BaseMysqlCurdManagerDao<T> {
 	 ******************************************
 	 * @return
 	 */
-	public T getById(@Param("id") String id);
+	public Object getById(@Param("id") String id);
 
 	/**
 	 * 新增

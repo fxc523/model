@@ -19,6 +19,7 @@ import java.util.Map;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.model.annotation.Column;
 import com.model.annotation.Table;
@@ -31,13 +32,14 @@ import com.model.util.Log;
  * @version 1.0
  ******************************************
  */
-public class BaseMysqlCurdManagerImpl<T> implements BaseMysqlCurdManager<T> {
+@Component
+public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 	
 	/**
 	 * BaseMysqlCurdManagerDao
 	 */
 	@Autowired
-	private BaseMysqlCurdManagerDao<T> baseMysqlCurdManagerDao;
+	private BaseMysqlCurdManagerDao baseMysqlCurdManagerDao;
 	
 	private static final String KEYFIELDMAP = "keyFieldMap";
 
@@ -45,7 +47,7 @@ public class BaseMysqlCurdManagerImpl<T> implements BaseMysqlCurdManager<T> {
 	 * @see com.model.system.curd.manager.BaseMysqlCurdManager#save(java.lang.Object)
 	 */
 	@Override
-	public Object save(T t) {
+	public <T> Object save(T t) {
 		boolean isSave = true;
 		Table tableName = t.getClass().getAnnotation(Table.class);
 		if ((tableName == null) || (tableName.name() == null || tableName.name() == "")) {
@@ -113,7 +115,7 @@ public class BaseMysqlCurdManagerImpl<T> implements BaseMysqlCurdManager<T> {
 	 * @param obj
 	 * @return
 	 */
-	private Field[] getAllFields(T obj) {
+	private <T> Field[] getAllFields(T obj) {
 		Field[] declaredFields = obj.getClass().getDeclaredFields();
 		
 		// 递归扫描父类的filed
@@ -154,7 +156,7 @@ public class BaseMysqlCurdManagerImpl<T> implements BaseMysqlCurdManager<T> {
 	 * @see com.model.system.curd.manager.BaseMysqlCurdManager#findAll()
 	 */
 	@Override
-	public List<T> findAll() {
+	public <T> List<T> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -163,7 +165,7 @@ public class BaseMysqlCurdManagerImpl<T> implements BaseMysqlCurdManager<T> {
 	 * @see com.model.system.curd.manager.BaseMysqlCurdManager#findOne(java.lang.String)
 	 */
 	@Override
-	public T findOne(String id) {
+	public <T> T findOne(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

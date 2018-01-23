@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.model.bean.User;
+import com.model.system.curd.manager.BaseMysqlCurdManager;
 
 /**
  ******************************************
@@ -29,7 +30,7 @@ import com.model.bean.User;
 public class MysqlCurdTest {
 	
 	@Autowired
-	private UserService us;
+	private BaseMysqlCurdManager baseMysqlCurdManager;
 
 	@RequestMapping("/save")
 	public void saveUser(String username,String pwd){
@@ -38,23 +39,16 @@ public class MysqlCurdTest {
 		User u = new User();
 		u.setUsername(username);
 		u.setPwd(pwd);
-		us.saveUser(u);
+		baseMysqlCurdManager.save(u);
 	}
 
-	/**
-	 * 获取 us
-	 * @return the us
-	 */
-	public UserService getUs() {
-		return us;
+	public BaseMysqlCurdManager getBaseMysqlCurdManager() {
+		return baseMysqlCurdManager;
 	}
 
-	/**
-	 * 设置 us
-	 * @param us the us to set
-	 */
-	public void setUs(UserService us) {
-		this.us = us;
+	public void setBaseMysqlCurdManager(BaseMysqlCurdManager baseMysqlCurdManager) {
+		this.baseMysqlCurdManager = baseMysqlCurdManager;
 	}
 
+	
 }

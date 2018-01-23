@@ -15,7 +15,6 @@ package com.model.system.curd.manager;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 /**
  ******************************************
@@ -24,7 +23,7 @@ import org.springframework.stereotype.Repository;
  ******************************************
  */
 @Component
-public interface BaseMysqlCurdManager<T> {
+public interface BaseMysqlCurdManager {
 
 	/**
 	 * 保存，如果主键有值则进行更新操作
@@ -34,7 +33,7 @@ public interface BaseMysqlCurdManager<T> {
 	 ******************************************
 	 * @param t
 	 */
-	Object save(T t);
+	<T> Object save(T t);
 	
 	/**
 	 * 根据主键条件删除
@@ -54,7 +53,7 @@ public interface BaseMysqlCurdManager<T> {
 	 ******************************************
 	 * @return
 	 */
-	 List<T> findAll();
+	<T> List<T> findAll();
 	
 	/**
 	 * 根据主键查找唯一数据
@@ -65,5 +64,5 @@ public interface BaseMysqlCurdManager<T> {
 	 * @param id 唯一主键
 	 * @return
 	 */
-	T findOne(String id);
+	<T> T findOne(String id);
 }
