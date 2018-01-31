@@ -69,7 +69,7 @@ public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 				}
 
 				// 如果是主键，并且不是空的时候，这时候应该是更新操作
-				if (column.isKey() && field.get(t) != null && Integer.parseInt((String) field.get(t)) > 0) {
+				if (column.isKey() && field.get(t) != null && field.get(t) != "") {
 					isSave = false;
 					keyFieldMap.put(field.getName(), field.get(t));
 				}
@@ -80,8 +80,9 @@ public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 				}else if(column.isKey() 
 						&& (field.get(t)==null || (String) field.get(t)=="")){
 					//如果是主键，并且是空的时候，这时候应该是新增，设置32位的主键
-					String idStr = baseMysqlCurdManagerDao.queryKey();
-					dataMap.put(field.getName(), idStr);
+					/*String idStr = baseMysqlCurdManagerDao.queryKey();*/
+					/*dataMap.put(field.getName(), idStr);*/
+					keyFieldMap.put(field.getName(), "");
 					continue;
 				}
 
@@ -93,6 +94,7 @@ public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 			}
 		}
 		if (isSave) {
+			dataMap.put(KEYFIELDMAP, keyFieldMap);
 			tableMap.put(tableName.name(), dataMap);
 			// 执行保存操作
 			baseMysqlCurdManagerDao.save(tableMap);
@@ -102,7 +104,7 @@ public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 			tableMap.put(tableName.name(), dataMap);
 			// 执行更新操作根据主键
 			baseMysqlCurdManagerDao.update(tableMap);
-			return baseMysqlCurdManagerDao.getById((String) dataMap.get("id"));
+			return null;
 		}
 	}
 	

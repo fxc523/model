@@ -39,6 +39,7 @@ public class MysqlCurdTest {
 		User u = new User();
 		u.setUsername(username);
 		u.setPwd(pwd);
+		//u.setId("bc2b1791065211e88ac70021cc6ef2ce");
 		baseMysqlCurdManager.save(u);
 	}
 

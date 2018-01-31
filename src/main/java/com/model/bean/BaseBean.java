@@ -26,6 +26,21 @@ public class BaseBean {
 	 */
 	@Column(type="VARCHAR",length=32,isKey=true)
 	private String id;
-	
+
+	/**
+	 * 获取 id
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * 设置 id
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
 	
 }
