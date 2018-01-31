@@ -16,6 +16,7 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,9 @@ import com.model.util.Log;
  ******************************************
  */
 @Component
-public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
+public class BaseMysqlCurdManagerImpl<T> implements BaseMysqlCurdManager<T> {
+	
+	private T t;
 	
 	/**
 	 * BaseMysqlCurdManagerDao
@@ -47,7 +50,8 @@ public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 	 * @see com.model.system.curd.manager.BaseMysqlCurdManager#save(java.lang.Object)
 	 */
 	@Override
-	public <T> Object save(T t) {
+	public Object save(T t) {
+		String keyField = "";
 		boolean isSave = true;
 		Table tableName = t.getClass().getAnnotation(Table.class);
 		if ((tableName == null) || (tableName.name() == null || tableName.name() == "")) {
@@ -72,6 +76,7 @@ public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 				if (column.isKey() && field.get(t) != null && field.get(t) != "") {
 					isSave = false;
 					keyFieldMap.put(field.getName(), field.get(t));
+					keyField = field.getName();
 				}
 				// 如果是自增,并且是保存的场合，不需要添加到map中做保存
 				if (isSave && column.isAutoIncrement()) {
@@ -80,9 +85,9 @@ public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 				}else if(column.isKey() 
 						&& (field.get(t)==null || (String) field.get(t)=="")){
 					//如果是主键，并且是空的时候，这时候应该是新增，设置32位的主键
-					/*String idStr = baseMysqlCurdManagerDao.queryKey();*/
-					/*dataMap.put(field.getName(), idStr);*/
-					keyFieldMap.put(field.getName(), "");
+					String idStr = UUID.randomUUID().toString().replace("-", "");
+					dataMap.put(field.getName(), idStr);
+					keyField = field.getName();
 					continue;
 				}
 
@@ -94,18 +99,17 @@ public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 			}
 		}
 		if (isSave) {
-			dataMap.put(KEYFIELDMAP, keyFieldMap);
 			tableMap.put(tableName.name(), dataMap);
 			// 执行保存操作
 			baseMysqlCurdManagerDao.save(tableMap);
-			return null;
+			return dataMap.get(keyField);
 		}else{
 			dataMap.put(KEYFIELDMAP, keyFieldMap);
 			tableMap.put(tableName.name(), dataMap);
 			// 执行更新操作根据主键
 			baseMysqlCurdManagerDao.update(tableMap);
-			return null;
 		}
+		return dataMap.get(keyField);
 	}
 	
 	/**
@@ -117,7 +121,7 @@ public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 	 * @param obj
 	 * @return
 	 */
-	private <T> Field[] getAllFields(T obj) {
+	private Field[] getAllFields(T obj) {
 		Field[] declaredFields = obj.getClass().getDeclaredFields();
 		
 		// 递归扫描父类的filed
@@ -158,7 +162,7 @@ public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 	 * @see com.model.system.curd.manager.BaseMysqlCurdManager#findAll()
 	 */
 	@Override
-	public <T> List<T> findAll() {
+	public List<T> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -167,10 +171,41 @@ public class BaseMysqlCurdManagerImpl implements BaseMysqlCurdManager {
 	 * @see com.model.system.curd.manager.BaseMysqlCurdManager#findOne(java.lang.String)
 	 */
 	@Override
-	public <T> T findOne(String id) {
-		// TODO Auto-generated method stub
+	public T findOne(String id) throws Exception {
+		t.getClass();
 		return null;
 	}
 
-	
+	/**
+	 * 获取 t
+	 * @return the t
+	 */
+	public T getT() {
+		return t;
+	}
+
+	/**
+	 * 设置 t
+	 * @param t the t to set
+	 */
+	public void setT(T t) {
+		this.t = t;
+	}
+
+	/**
+	 * 获取 baseMysqlCurdManagerDao
+	 * @return the baseMysqlCurdManagerDao
+	 */
+	public BaseMysqlCurdManagerDao getBaseMysqlCurdManagerDao() {
+		return baseMysqlCurdManagerDao;
+	}
+
+	/**
+	 * 设置 baseMysqlCurdManagerDao
+	 * @param baseMysqlCurdManagerDao the baseMysqlCurdManagerDao to set
+	 */
+	public void setBaseMysqlCurdManagerDao(BaseMysqlCurdManagerDao baseMysqlCurdManagerDao) {
+		this.baseMysqlCurdManagerDao = baseMysqlCurdManagerDao;
+	}
+
 }

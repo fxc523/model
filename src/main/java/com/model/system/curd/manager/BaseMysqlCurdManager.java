@@ -23,8 +23,8 @@ import org.springframework.stereotype.Component;
  ******************************************
  */
 @Component
-public interface BaseMysqlCurdManager {
-
+public interface BaseMysqlCurdManager<T> {
+	
 	/**
 	 * 保存，如果主键有值则进行更新操作
 	 ******************************************
@@ -33,7 +33,7 @@ public interface BaseMysqlCurdManager {
 	 ******************************************
 	 * @param t
 	 */
-	<T> Object save(T t);
+	Object save(T t);
 	
 	/**
 	 * 根据主键条件删除
@@ -53,7 +53,7 @@ public interface BaseMysqlCurdManager {
 	 ******************************************
 	 * @return
 	 */
-	<T> List<T> findAll();
+	List<T> findAll();
 	
 	/**
 	 * 根据主键查找唯一数据
@@ -63,6 +63,7 @@ public interface BaseMysqlCurdManager {
 	 ******************************************
 	 * @param id 唯一主键
 	 * @return
+	 * @throws Exception 
 	 */
-	<T> T findOne(String id);
+	Object findOne(String id) throws Exception;
 }

@@ -30,7 +30,7 @@ import com.model.system.curd.manager.BaseMysqlCurdManager;
 public class MysqlCurdTest {
 	
 	@Autowired
-	private BaseMysqlCurdManager baseMysqlCurdManager;
+	private BaseMysqlCurdManager<User> baseMysqlCurdManager;
 
 	@RequestMapping("/save")
 	public void saveUser(String username,String pwd){
@@ -43,13 +43,20 @@ public class MysqlCurdTest {
 		baseMysqlCurdManager.save(u);
 	}
 
-	public BaseMysqlCurdManager getBaseMysqlCurdManager() {
+	/**
+	 * 获取 baseMysqlCurdManager
+	 * @return the baseMysqlCurdManager
+	 */
+	public BaseMysqlCurdManager<User> getBaseMysqlCurdManager() {
 		return baseMysqlCurdManager;
 	}
 
-	public void setBaseMysqlCurdManager(BaseMysqlCurdManager baseMysqlCurdManager) {
+	/**
+	 * 设置 baseMysqlCurdManager
+	 * @param baseMysqlCurdManager the baseMysqlCurdManager to set
+	 */
+	public void setBaseMysqlCurdManager(BaseMysqlCurdManager<User> baseMysqlCurdManager) {
 		this.baseMysqlCurdManager = baseMysqlCurdManager;
 	}
-
 	
 }
